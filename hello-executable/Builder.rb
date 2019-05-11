@@ -1,11 +1,12 @@
-require_relative "ProjectBuilder.rb"
+require_relative "../Scripts/ProjectBuilder.rb"
 
 # See:
 # -  Build error: No such module "SwiftGlibc" – https://lists.swift.org/pipermail/swift-dev/Week-of-Mon-20160919/002955.html
-class HelloExeBuilder < ProjectBuilder
+class Builder < ProjectBuilder
 
-   def initialize(arch = Arch.default)
+   def initialize(arch)
       component = "hello-exe"
+      @root = File.dirname(__FILE__)
       super(component, arch)
    end
 

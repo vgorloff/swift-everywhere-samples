@@ -1,2 +1,2 @@
-# Replace with path to NDK.
-ndk.dir: ~/Library/Android/sdk/ndk-bundle
+# Replace with path to Swift for Android Toolchain.
+swiftToolchain.dir: ../../swift-everywhere-toolchain/ToolChain/swift-android-toolchain
