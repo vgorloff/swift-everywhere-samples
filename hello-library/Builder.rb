@@ -1,12 +1,13 @@
-require_relative "ProjectBuilder.rb"
+require_relative "../Scripts/ProjectBuilder.rb"
 
 # See also:
 # - ios - How to open a .swiftmodule file - Stack Overflow: http://bit.ly/2HET1d9
 
-class HelloLibBuilder < ProjectBuilder
+class Builder < ProjectBuilder
 
    def initialize(arch = Arch.default)
       component = "hello-lib"
+      @root = File.dirname(__FILE__)
       super(component, arch)
    end
 
