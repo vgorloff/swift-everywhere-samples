@@ -47,7 +47,7 @@ EOM
       elsif action == "build" then build()
       elsif action == "clean" then clean()
       elsif action == "verify" then ADB.verify()
-      elsif action.start_with?("clean:") then clean(action.sub("clean:", ''))
+      elsif action.start_with?("clean:") then undeploy(action.sub("clean:", ''))
       elsif action.start_with?("deploy:") then deploy(action.sub("deploy:", ''))
       else usage()
       end
@@ -65,6 +65,14 @@ EOM
       Builder.new("aarch64").clean()
       Builder.new("x86").clean()
       Builder.new("x86_64").clean()
+   end
+   
+   def self.deploy(arch)
+      Builder.new(arch).deploy()
+   end
+   
+   def self.undeploy(arch)
+      Builder.new(arch).undeploy()
    end
 
    def initialize(component, arch)
@@ -121,6 +129,16 @@ EOM
    
    def clean
       execute "rm -rf \"#{@builds}\""
+   end
+   
+   def deploy()
+      adb = ADB.new(libs, binary)
+      adb.deploy()
+      adb.run()
+   end
+   
+   def undeploy()
+      ADB.new(libs, binary).clean
    end
 
 end
