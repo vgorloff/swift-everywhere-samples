@@ -107,22 +107,18 @@ EOM
       @copyLibsCmd = @toolchainDir + "/bin/copy-libs-" + @ndkArchPath
    end
 
-   def prepare
-      removeBuilds()
-      super
-   end
-
    def libs
       return Dir["#{@builds}/lib/*"]
    end
 
    def copyLibs()
       targetDir = "#{@builds}/lib"
-      execute "rm -rvf \"#{targetDir}\""
+      execute "rm -rf \"#{targetDir}\""
       execute "#{@copyLibsCmd} #{targetDir}"
    end
    
    def build
+      clean()
       execute "mkdir -p \"#{@builds}\""
       executeBuild()
    end
