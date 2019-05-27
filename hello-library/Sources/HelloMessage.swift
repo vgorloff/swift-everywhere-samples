@@ -49,8 +49,6 @@ public class HelloMessage {
       // ~~~~~~~~~~ Networking
       print("SA - URLSession: Currently disabled. Will fail with `Segmentation fault`. Seems something in Foundation classes needs to be fixed.")
 
-      // Still works strange. `Segmentation fault`
-
       // let config = URLSessionConfiguration()
       // let session = URLSession(configuration: config)
       // if let url = URL(string: "https://www.example.com") {
