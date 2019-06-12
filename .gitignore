@@ -1,3 +1,4 @@
 /*.log
 .DS_Store
 local.properties.yml
+/*.code-workspace
