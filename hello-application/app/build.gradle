@@ -1,8 +1,5 @@
 apply plugin: 'com.android.application'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -12,16 +9,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        externalNativeBuild {
-            cmake {
-                arguments "-DANDROID_TOOLCHAIN=clang", '-DANDROID_ARM_NEON=TRUE',
-                        "-DSA_SWIFT_TOOLCHAIN_DIR=${properties.getProperty('swiftToolchain.dir')}"
-                cppFlags "-frtti -fexceptions"
-                cFlags '-O3', '-fsigned-char'
-            }
-        }
-
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
@@ -32,20 +19,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs 'build/swift'
-        }
-    }
-
-    // Encapsulates your external native build configurations.
-    externalNativeBuild {
-
-        // Encapsulates your CMake build configurations.
-        cmake {
-            // Provides a relative path to your CMake build script.
-            path "src/main/cpp/CMakeLists.txt"
         }
     }
 }
@@ -57,4 +33,27 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// https://stackoverflow.com/a/36730534/1418981
+// https://stackoverflow.com/q/50448281/1418981
+def getDeviceAbi() {
+    return "adb shell getprop ro.product.cpu.abi".execute().text.trim()
+}
+
+// See: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
+task spm(type:Exec) {
+    project.logger.lifecycle("Building Swift sources for: ${getDeviceAbi()}")
+    workingDir "$rootDir"
+    executable = '/usr/bin/env'
+    args = ["ruby", "-r", "./Builder.rb", "-e", "Builder.perform('${getDeviceAbi()}')"]
+}
+
+afterEvaluate {
+    if (project.hasProperty("assembleRelease")) {
+        assembleRelease.dependsOn spm
+    }
+    if (project.hasProperty("assembleDebug")) {
+        assembleDebug.dependsOn spm
+    }
 }
