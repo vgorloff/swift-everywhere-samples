@@ -1,0 +1,2 @@
+# Replace with path to Swift for Android Toolchain.
+swiftToolchain.dir: ../../swift-everywhere-toolchain/ToolChain/swift-android-toolchain
