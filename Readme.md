@@ -1,13 +1,11 @@
-Requirements
-============
+# Requirements
 
-- Xcode 10.1
-- Android Studio 3.3
-- Android NDK 19 (Comes with Android Studio as downloadable package).
+- Xcode 10.2.1
+- Android Studio 3.4
+- Android NDK 20 (Comes with Android Studio as downloadable package).
 - Ruby 2.5 (Comes with macOS)
 
-Using Sample projects
-=====================
+## Using Sample projects
 
 1. Make sure that you have [Swift Android Toolchain](https://github.com/vgorloff/swift-everywhere-toolchain). You can either build it or download [pre-build](https://github.com/vgorloff/swift-everywhere-toolchain/releases) version.
 
