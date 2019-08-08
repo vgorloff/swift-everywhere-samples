@@ -1,4 +1,5 @@
 require 'yaml'
+require 'fileutils'
 require_relative "../Scripts/Tool.rb"
 
 class Builder < Tool
@@ -35,28 +36,33 @@ class Builder < Tool
       @toolchainDir = File.expand_path(toolchainDir)
 
       if @arch == "armeabi-v7a"
-         @ndkArchPath = "arm-linux-androideabi"
+         @target = "armv7-none-linux-androideabi"
       elsif @arch == "x86"
-         @ndkArchPath = "i686-linux-android"
+         @target = "i686-unknown-linux-android"
       elsif @arch == "arm64-v8a"
-         @ndkArchPath = "aarch64-linux-android"
+         @target = "aarch64-unknown-linux-android"
       elsif @arch == "x86_64"
-         @ndkArchPath = "x86_64-linux-android"
+         @target = "x86_64-unknown-linux-android"
       end
-      @swiftc = @toolchainDir + "/bin/swiftc-" + @ndkArchPath
-      @copyLibsCmd = @toolchainDir + "/bin/copy-libs-" + @ndkArchPath
+      @config = "release"
+      @buildDir = "#{Dir.pwd}/build/#{@arch}"
+      @swiftBuild = @toolchainDir + "/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
+      @copyLibsCmd = @toolchainDir + "/bin/android-copy-libs --android-target #{@target}"
    end
 
    def build()
-      execute "mkdir -p \"#{@builds}\""
-      binary = "#{@builds}/libHelloMessages.so"
-      sources = Dir["#{@sources}/*.swift"].join(" ")
-      execute "cd #{@builds} && #{@swiftc} -emit-library -parse-as-library -module-name HelloMessages -o #{binary} #{sources}"
+      system "mkdir -p \"#{@builds}\""
+      system "cd #{@builds} && #{@swiftBuild}"
       copyLibs
+      libs = Dir["#{@buildDir}/#{@config}/**/*.so"]
+      libs.each { |lib|
+         dst = File.join(@builds, File.basename(lib))
+         FileUtils.copy_entry(lib, dst, false, false, true)
+      }
    end
 
    def copyLibs()
-      execute "#{@copyLibsCmd} #{@builds}"
+      system "#{@copyLibsCmd} #{@builds}"
    end
 
 end

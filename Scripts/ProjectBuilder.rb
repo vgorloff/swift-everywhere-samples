@@ -5,7 +5,7 @@ require 'yaml'
 class ProjectBuilder < Tool
 
    attr_reader :binary
-   
+
    def self.usage()
       tool = Tool.new()
 
@@ -30,17 +30,17 @@ EOM
    $ make deploy:x86_64
 EOM
       tool.print(help, 36)
-      
+
       tool.print("4. (Optional) Clean deployed project:", 32)
       tool.print("   $ make clean:armv7a", 36)
       tool.print("   $ make clean:aarch64", 36)
       tool.print("   $ make clean:x86", 36)
       tool.print("   $ make clean:x86_64", 36)
-      
+
       tool.print("\n5. (Optional) Clean project:", 32)
       tool.print("   $ make clean\n", 36)
    end
-   
+
    def self.perform()
       action = ARGV.first
       if action.nil? then usage()
@@ -52,25 +52,25 @@ EOM
       else usage()
       end
    end
-   
+
    def self.build()
      Builder.new("armv7a").build()
      Builder.new("aarch64").build()
      Builder.new("x86").build()
      Builder.new("x86_64").build()
    end
-   
+
    def self.clean()
       Builder.new("armv7a").clean()
       Builder.new("aarch64").clean()
       Builder.new("x86").clean()
       Builder.new("x86_64").clean()
    end
-   
+
    def self.deploy(arch)
       Builder.new(arch).deploy()
    end
-   
+
    def self.undeploy(arch)
       Builder.new(arch).undeploy()
    end
@@ -79,14 +79,14 @@ EOM
       @arch = arch
       @sources = "#{@root}/Sources"
       @builds = "#{@root}/build-#{arch}"
-      
+
       settingsFilePath = "#{@root}/local.properties.yml"
       if File.exist?(settingsFilePath)
          @config = YAML.load_file(settingsFilePath)
       else
          raise "File \"#{settingsFilePath}\" not exists."
       end
-      
+
       toolchainDir = @config['swiftToolchain.dir']
       if toolchainDir.nil?
          raise "Setting \"swiftToolchain.dir\" is missed in file \"#{settingsFilePath}\"."
@@ -103,8 +103,8 @@ EOM
       elsif @arch == "x86_64"
          @ndkArchPath = "x86_64-linux-android"
       end
-      @swiftc = @toolchainDir + "/bin/swiftc-" + @ndkArchPath
-      @copyLibsCmd = @toolchainDir + "/bin/copy-libs-" + @ndkArchPath
+      @swiftc = @toolchainDir + "/bin/swiftc-" + @ndkArchPath + " -v"
+      @copyLibsCmd = @toolchainDir + "/bin/copy-libs-" + @ndkArchPath + " -v"
    end
 
    def libs
@@ -116,23 +116,23 @@ EOM
       execute "rm -rf \"#{targetDir}\""
       execute "#{@copyLibsCmd} #{targetDir}"
    end
-   
+
    def build
       clean()
       execute "mkdir -p \"#{@builds}\""
       executeBuild()
    end
-   
+
    def clean
       execute "rm -rf \"#{@builds}\""
    end
-   
+
    def deploy()
       adb = ADB.new(libs, binary)
       adb.deploy()
       adb.run()
    end
-   
+
    def undeploy()
       ADB.new(libs, binary).clean
    end
