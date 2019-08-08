@@ -43,10 +43,10 @@ def getDeviceAbi() {
 
 // See: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
 task spm(type:Exec) {
-    project.logger.lifecycle("Building Swift sources for: ${getDeviceAbi()}")
+    // project.logger.lifecycle("Building Swift sources...")
     workingDir "$rootDir"
     executable = '/usr/bin/env'
-    args = ["ruby", "-r", "./Builder.rb", "-e", "Builder.perform('${getDeviceAbi()}')"]
+    args = ["ruby", "-r", "./Builder.rb", "-e", "Builder.perform('')"]
 }
 
 afterEvaluate {
