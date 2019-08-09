@@ -17,8 +17,8 @@ class Builder < Tool
 
    def initialize(arch)
       @root = File.dirname(__FILE__)
+      @package = File.join(@root, "../Package")
       @arch = arch
-      @sources = "#{@root}/Sources"
       @builds = "#{@root}/app/build/swift/#{arch}"
 
       settingsFilePath = "#{@root}/local.properties.yml"
@@ -45,14 +45,14 @@ class Builder < Tool
          @target = "x86_64-unknown-linux-android"
       end
       @config = "release"
-      @buildDir = "#{Dir.pwd}/build/#{@arch}"
+      @buildDir = "#{Dir.pwd}/app/build/swift-#{@arch}"
       @swiftBuild = @toolchainDir + "/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
       @copyLibsCmd = @toolchainDir + "/bin/android-copy-libs --android-target #{@target}"
    end
 
    def build()
       system "mkdir -p \"#{@builds}\""
-      system "cd #{@builds} && #{@swiftBuild}"
+      system "cd #{@package} && #{@swiftBuild}"
       copyLibs
       libs = Dir["#{@buildDir}/#{@config}/**/*.so"]
       libs.each { |lib|
