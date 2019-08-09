@@ -3,3 +3,4 @@
 local.properties.yml
 /*.code-workspace
 /.build
+xcuserdata/
