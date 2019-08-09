@@ -96,6 +96,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		80B55E7522FE038B00B6BFA0 /* android */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 80B55E7822FE038B00B6BFA0 /* Build configuration list for PBXLegacyTarget "android" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = android;
+			passBuildSettingsInEnvironment = 0;
+			productName = android;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		80BF140022FD285F00706C21 /* hello-application */ = {
 			isa = PBXNativeTarget;
@@ -129,6 +146,9 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
+					80B55E7522FE038B00B6BFA0 = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					80BF140022FD285F00706C21 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -148,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				80BF140022FD285F00706C21 /* hello-application */,
+				80B55E7522FE038B00B6BFA0 /* android */,
 			);
 		};
 /* End PBXProject section */
@@ -197,6 +218,18 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		80B55E7622FE038B00B6BFA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		80B55E7722FE038B00B6BFA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
 		80BF141322FD286100706C21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -348,6 +381,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		80B55E7822FE038B00B6BFA0 /* Build configuration list for PBXLegacyTarget "android" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80B55E7622FE038B00B6BFA0 /* Debug */,
+				80B55E7722FE038B00B6BFA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		80BF13FC22FD285F00706C21 /* Build configuration list for PBXProject "hello-application" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
