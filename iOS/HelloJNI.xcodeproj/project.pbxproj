@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		80BF140E22FD286100706C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BF140D22FD286100706C21 /* Assets.xcassets */; };
 		80BF141122FD286100706C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BF140F22FD286100706C21 /* LaunchScreen.storyboard */; };
-		80BF142122FD31E700706C21 /* HelloMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 80BF142022FD31E700706C21 /* HelloMessages */; };
-		80BF142322FD31E700706C21 /* HelloMessages in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80BF142022FD31E700706C21 /* HelloMessages */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		80C0A75322FEDFC60067C979 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A74F22FEDFC50067C979 /* ViewController.swift */; };
 		80C0A75422FEDFC60067C979 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75022FEDFC50067C979 /* AppDelegate.swift */; };
 		80C0A75522FEDFC60067C979 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75122FEDFC50067C979 /* Application.swift */; };
 		80C0A75622FEDFC60067C979 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75222FEDFC50067C979 /* main.swift */; };
+		80C0A75F22FEE1B50067C979 /* HelloJNICore in Frameworks */ = {isa = PBXBuildFile; productRef = 80C0A75E22FEE1B50067C979 /* HelloJNICore */; };
+		80C0A76022FEE1B50067C979 /* HelloJNICore in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80C0A75E22FEE1B50067C979 /* HelloJNICore */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80BF142322FD31E700706C21 /* HelloMessages in Embed Frameworks */,
+				80C0A76022FEE1B50067C979 /* HelloJNICore in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BF142122FD31E700706C21 /* HelloMessages in Frameworks */,
+				80C0A75F22FEE1B50067C979 /* HelloJNICore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,11 +124,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				80BF141E22FD31E300706C21 /* PBXTargetDependency */,
+				80C0A76222FEE1BA0067C979 /* PBXTargetDependency */,
 			);
 			name = "HelloJNI-iOS";
 			packageProductDependencies = (
-				80BF142022FD31E700706C21 /* HelloMessages */,
+				80C0A75E22FEE1B50067C979 /* HelloJNICore */,
 			);
 			productName = "hello-application";
 			productReference = 80BF140122FD285F00706C21 /* HelloJNI.app */;
@@ -152,7 +152,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 80BF13FC22FD285F00706C21 /* Build configuration list for PBXProject "hello-application" */;
+			buildConfigurationList = 80BF13FC22FD285F00706C21 /* Build configuration list for PBXProject "HelloJNI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -198,9 +198,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		80BF141E22FD31E300706C21 /* PBXTargetDependency */ = {
+		80C0A76222FEE1BA0067C979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 80BF141D22FD31E300706C21 /* HelloMessages */;
+			productRef = 80C0A76122FEE1BA0067C979 /* HelloJNICore */;
 		};
 /* End PBXTargetDependency section */
 
@@ -384,7 +384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80BF13FC22FD285F00706C21 /* Build configuration list for PBXProject "hello-application" */ = {
+		80BF13FC22FD285F00706C21 /* Build configuration list for PBXProject "HelloJNI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80BF141322FD286100706C21 /* Debug */,
@@ -405,13 +405,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		80BF141D22FD31E300706C21 /* HelloMessages */ = {
+		80C0A75E22FEE1B50067C979 /* HelloJNICore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HelloMessages;
+			productName = HelloJNICore;
 		};
-		80BF142022FD31E700706C21 /* HelloMessages */ = {
+		80C0A76122FEE1BA0067C979 /* HelloJNICore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HelloMessages;
+			productName = HelloJNICore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

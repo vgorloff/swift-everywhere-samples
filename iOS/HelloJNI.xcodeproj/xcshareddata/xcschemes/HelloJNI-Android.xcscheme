@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80BF140022FD285F00706C21"
-               BuildableName = "HelloJNI-iOS.app"
-               BlueprintName = "HelloJNI-iOS"
-               ReferencedContainer = "container:hello-application.xcodeproj">
+               BlueprintIdentifier = "80B55E7522FE038B00B6BFA0"
+               BuildableName = "android"
+               BlueprintName = "android"
+               ReferencedContainer = "container:HelloJNI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80BF140022FD285F00706C21"
-            BuildableName = "HelloJNI-iOS.app"
-            BlueprintName = "HelloJNI-iOS"
-            ReferencedContainer = "container:hello-application.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80BF140022FD285F00706C21"
-            BuildableName = "HelloJNI-iOS.app"
-            BlueprintName = "HelloJNI-iOS"
-            ReferencedContainer = "container:hello-application.xcodeproj">
+            BlueprintIdentifier = "80B55E7522FE038B00B6BFA0"
+            BuildableName = "android"
+            BlueprintName = "android"
+            ReferencedContainer = "container:HelloJNI.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

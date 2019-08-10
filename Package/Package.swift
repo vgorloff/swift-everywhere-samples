@@ -3,15 +3,15 @@
 import PackageDescription
 
 let package = Package(
-   name: "HelloMessages",
+   name: "HelloJNI",
    products: [
       // See: https://theswiftdev.com/2019/01/14/all-about-the-swift-package-manager-and-the-swift-toolchain/
-      .library(name: "HelloMessages", type: .dynamic, targets: ["HelloMessages"]),
+      .library(name: "HelloJNICore", type: .dynamic, targets: ["HelloJNICore"]),
       .library(name: "NDKLog", targets: ["NDKLog"])
    ],
    targets: [
-      .target(name: "HelloMessages", dependencies: ["NDKLog"]),
-      .systemLibrary(name: "sysNDKLog"),
-      .target(name: "NDKLog", dependencies: ["sysNDKLog"])
+      .target(name: "HelloJNICore", dependencies: ["NDKLog"]),
+      .target(name: "NDKLog", dependencies: ["sysNDKLog"]),
+      .systemLibrary(name: "sysNDKLog")
    ]
 )

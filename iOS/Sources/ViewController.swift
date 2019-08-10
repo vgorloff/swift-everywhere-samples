@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HelloMessages
+import HelloJNICore
 
 class ViewController: UIViewController {
 
