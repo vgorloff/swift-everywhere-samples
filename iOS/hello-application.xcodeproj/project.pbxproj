@@ -61,7 +61,6 @@
 				80BF141C22FD313E00706C21 /* Package */,
 				80BF140322FD285F00706C21 /* hello-application */,
 				80BF140222FD285F00706C21 /* Products */,
-				80BF141F22FD31E700706C21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,13 +84,6 @@
 				80BF141A22FD2F6500706C21 /* Application.swift */,
 			);
 			path = "hello-application";
-			sourceTree = "<group>";
-		};
-		80BF141F22FD31E700706C21 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
