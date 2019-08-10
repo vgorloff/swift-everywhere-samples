@@ -46,7 +46,7 @@ task spm(type:Exec) {
     // project.logger.lifecycle("Building Swift sources...")
     workingDir "$rootDir"
     executable = '/usr/bin/env'
-    args = ["ruby", "-r", "./Builder.rb", "-e", "Builder.perform('')"]
+    args = ["ruby", "-r", "../Scripts/Builder.rb", "-e", "Builder.perform('')"]
 }
 
 afterEvaluate {

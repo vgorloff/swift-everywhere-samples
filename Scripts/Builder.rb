@@ -1,6 +1,6 @@
 require 'yaml'
 require 'fileutils'
-require_relative "../Scripts/Tool.rb"
+require_relative "Tool.rb"
 
 class Builder < Tool
 
@@ -9,40 +9,27 @@ class Builder < Tool
       # puts ENV.each { |name, value| puts "#{name} -> #{value}" }
       # puts "Arguments"
       # puts ARGV
-      perform("armeabi-v7a")
+      Builder.new("x86_64").build()
    end
 
    def self.perform(arch)
       if arch.empty?
-         Builder.new("armeabi-v7a").build()
-         Builder.new("arm64-v8a").build()
-         Builder.new("x86").build()
-         Builder.new("x86_64").build()
+         Builder.new("armeabi-v7a").make()
+         Builder.new("arm64-v8a").make()
+         Builder.new("x86").make()
+         Builder.new("x86_64").make()
       else
-         Builder.new(arch).build()
+         Builder.new(arch).make()
       end
    end
 
    def initialize(arch)
       @isVerbose = false
-      @root = File.dirname(__FILE__)
-      @package = File.join(@root, "../Package")
+      @root = File.expand_path(File.join(File.dirname(__FILE__), "../"))
+
+      @package = File.join(@root, "Package")
       @arch = arch
-      @builds = "#{@root}/app/build/swift/#{arch}"
-
-      settingsFilePath = "#{@root}/local.properties.yml"
-      if File.exist?(settingsFilePath)
-         @config = YAML.load_file(settingsFilePath)
-      else
-         raise "File \"#{settingsFilePath}\" not exists."
-      end
-
-      toolchainDir = @config['swiftToolchain.dir']
-      if toolchainDir.nil?
-         raise "Setting \"swiftToolchain.dir\" is missed in file \"#{settingsFilePath}\"."
-      end
-
-      @toolchainDir = File.expand_path(toolchainDir)
+      readConfig()
 
       if @arch == "armeabi-v7a"
          @target = "armv7-none-linux-androideabi"
@@ -54,28 +41,50 @@ class Builder < Tool
          @target = "x86_64-unknown-linux-android"
       end
       @config = "release"
-      @buildDir = "#{@root}/app/build/swift-#{@arch}"
-      @swiftBuild = @toolchainDir + "/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
-      @copyLibsCmd = @toolchainDir + "/bin/android-copy-libs --android-target #{@target}"
-      if @isVerbose
-         @copyLibsCmd += " -v"
-         @swiftBuild += " -v"
+      @buildDir = "#{@root}/Android/app/build/swift-#{@arch}"
+   end
+
+   def readConfig
+      settingsFilePath = "#{@root}/local.properties.yml"
+      if File.exist?(settingsFilePath)
+         @config = YAML.load_file(settingsFilePath)
+      else
+         raise "File \"#{settingsFilePath}\" not exists."
       end
+      toolchainDir = @config['swiftToolchain.dir']
+      if toolchainDir.nil?
+         raise "Setting \"swiftToolchain.dir\" is missed in file \"#{settingsFilePath}\"."
+      end
+
+      @toolchainDir = File.expand_path(toolchainDir)
+   end
+
+   def make()
+      build()
+      copyLibs()
    end
 
    def build()
-      system "mkdir -p \"#{@builds}\""
+      @swiftBuild = @toolchainDir + "/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
+      if @isVerbose
+         @swiftBuild += " -v"
+      end
       system "cd #{@package} && #{@swiftBuild}"
-      copyLibs
+   end
+
+   def copyLibs()
+      @copyLibsCmd = @toolchainDir + "/bin/android-copy-libs --android-target #{@target}"
+      if @isVerbose
+         @copyLibsCmd += " -v"
+      end
+      @builds = "#{@root}/Android/app/build/swift/#{@arch}"
+      system "mkdir -p \"#{@builds}\""
+      system "#{@copyLibsCmd} #{@builds}"
       libs = Dir["#{@buildDir}/#{@config}/**/*.so"]
       libs.each { |lib|
          dst = File.join(@builds, File.basename(lib))
          FileUtils.copy_entry(lib, dst, false, false, true)
       }
-   end
-
-   def copyLibs()
-      system "#{@copyLibsCmd} #{@builds}"
    end
 
 end
