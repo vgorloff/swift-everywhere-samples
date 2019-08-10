@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "80BF140022FD285F00706C21"
-               BuildableName = "hello-application.app"
-               BlueprintName = "hello-application"
+               BuildableName = "HelloJNI-iOS.app"
+               BlueprintName = "HelloJNI-iOS"
                ReferencedContainer = "container:hello-application.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "80BF140022FD285F00706C21"
-            BuildableName = "hello-application.app"
-            BlueprintName = "hello-application"
+            BuildableName = "HelloJNI-iOS.app"
+            BlueprintName = "HelloJNI-iOS"
             ReferencedContainer = "container:hello-application.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "80BF140022FD285F00706C21"
-            BuildableName = "hello-application.app"
-            BlueprintName = "hello-application"
+            BuildableName = "HelloJNI-iOS.app"
+            BlueprintName = "HelloJNI-iOS"
             ReferencedContainer = "container:hello-application.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

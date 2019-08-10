@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80BF140522FD285F00706C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF140422FD285F00706C21 /* AppDelegate.swift */; };
-		80BF140922FD285F00706C21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF140822FD285F00706C21 /* ViewController.swift */; };
 		80BF140E22FD286100706C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BF140D22FD286100706C21 /* Assets.xcassets */; };
 		80BF141122FD286100706C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BF140F22FD286100706C21 /* LaunchScreen.storyboard */; };
-		80BF141922FD2F4200706C21 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF141822FD2F4200706C21 /* main.swift */; };
-		80BF141B22FD2F6500706C21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF141A22FD2F6500706C21 /* Application.swift */; };
 		80BF142122FD31E700706C21 /* HelloMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 80BF142022FD31E700706C21 /* HelloMessages */; };
 		80BF142322FD31E700706C21 /* HelloMessages in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80BF142022FD31E700706C21 /* HelloMessages */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		80C0A75322FEDFC60067C979 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A74F22FEDFC50067C979 /* ViewController.swift */; };
+		80C0A75422FEDFC60067C979 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75022FEDFC50067C979 /* AppDelegate.swift */; };
+		80C0A75522FEDFC60067C979 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75122FEDFC50067C979 /* Application.swift */; };
+		80C0A75622FEDFC60067C979 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0A75222FEDFC50067C979 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,15 +32,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		80BF140122FD285F00706C21 /* hello-application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hello-application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		80BF140422FD285F00706C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80BF140822FD285F00706C21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80BF140122FD285F00706C21 /* HelloJNI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloJNI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BF140D22FD286100706C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80BF141022FD286100706C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		80BF141222FD286100706C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80BF141822FD2F4200706C21 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		80BF141A22FD2F6500706C21 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80BF141C22FD313E00706C21 /* Package */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Package; path = ../Package; sourceTree = "<group>"; };
+		80C0A74F22FEDFC50067C979 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80C0A75022FEDFC50067C979 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80C0A75122FEDFC50067C979 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		80C0A75222FEDFC50067C979 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				80BF141C22FD313E00706C21 /* Package */,
-				80BF140322FD285F00706C21 /* hello-application */,
+				80C0A74E22FEDFC50067C979 /* Sources */,
+				80BF140322FD285F00706C21 /* Resources */,
 				80BF140222FD285F00706C21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,23 +67,29 @@
 		80BF140222FD285F00706C21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80BF140122FD285F00706C21 /* hello-application.app */,
+				80BF140122FD285F00706C21 /* HelloJNI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80BF140322FD285F00706C21 /* hello-application */ = {
+		80BF140322FD285F00706C21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80BF140422FD285F00706C21 /* AppDelegate.swift */,
-				80BF140822FD285F00706C21 /* ViewController.swift */,
 				80BF140D22FD286100706C21 /* Assets.xcassets */,
 				80BF140F22FD286100706C21 /* LaunchScreen.storyboard */,
-				80BF141222FD286100706C21 /* Info.plist */,
-				80BF141822FD2F4200706C21 /* main.swift */,
-				80BF141A22FD2F6500706C21 /* Application.swift */,
 			);
-			path = "hello-application";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80C0A74E22FEDFC50067C979 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				80C0A75022FEDFC50067C979 /* AppDelegate.swift */,
+				80C0A75122FEDFC50067C979 /* Application.swift */,
+				80C0A75222FEDFC50067C979 /* main.swift */,
+				80C0A74F22FEDFC50067C979 /* ViewController.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +112,9 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		80BF140022FD285F00706C21 /* hello-application */ = {
+		80BF140022FD285F00706C21 /* HelloJNI-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80BF141522FD286100706C21 /* Build configuration list for PBXNativeTarget "hello-application" */;
+			buildConfigurationList = 80BF141522FD286100706C21 /* Build configuration list for PBXNativeTarget "HelloJNI-iOS" */;
 			buildPhases = (
 				80BF13FD22FD285F00706C21 /* Sources */,
 				80BF13FE22FD285F00706C21 /* Frameworks */,
@@ -120,12 +126,12 @@
 			dependencies = (
 				80BF141E22FD31E300706C21 /* PBXTargetDependency */,
 			);
-			name = "hello-application";
+			name = "HelloJNI-iOS";
 			packageProductDependencies = (
 				80BF142022FD31E700706C21 /* HelloMessages */,
 			);
 			productName = "hello-application";
-			productReference = 80BF140122FD285F00706C21 /* hello-application.app */;
+			productReference = 80BF140122FD285F00706C21 /* HelloJNI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +165,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80BF140022FD285F00706C21 /* hello-application */,
+				80BF140022FD285F00706C21 /* HelloJNI-iOS */,
 				80B55E7522FE038B00B6BFA0 /* android */,
 			);
 		};
@@ -182,10 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BF141B22FD2F6500706C21 /* Application.swift in Sources */,
-				80BF140922FD285F00706C21 /* ViewController.swift in Sources */,
-				80BF140522FD285F00706C21 /* AppDelegate.swift in Sources */,
-				80BF141922FD2F4200706C21 /* main.swift in Sources */,
+				80C0A75422FEDFC60067C979 /* AppDelegate.swift in Sources */,
+				80C0A75522FEDFC60067C979 /* Application.swift in Sources */,
+				80C0A75622FEDFC60067C979 /* main.swift in Sources */,
+				80C0A75322FEDFC60067C979 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +279,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -327,8 +331,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -341,13 +343,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "hello-application/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.hello-application";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.HelloJNI;
+				PRODUCT_NAME = HelloJNI;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -358,13 +360,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "hello-application/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.hello-application";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.HelloJNI;
+				PRODUCT_NAME = HelloJNI;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -391,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80BF141522FD286100706C21 /* Build configuration list for PBXNativeTarget "hello-application" */ = {
+		80BF141522FD286100706C21 /* Build configuration list for PBXNativeTarget "HelloJNI-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80BF141622FD286100706C21 /* Debug */,
