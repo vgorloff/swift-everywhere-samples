@@ -1,0 +1,9 @@
+module ndk [system] {
+
+   module log {
+      header "sysNDKLog.h"
+      header "/usr/local/ndk/sysroot/usr/include/android/log.h"
+      export *
+      link "log"
+   }
+}
