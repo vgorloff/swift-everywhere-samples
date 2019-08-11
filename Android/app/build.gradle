@@ -9,9 +9,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        /*
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
+        */
     }
     buildTypes {
         release {
@@ -20,8 +22,23 @@ android {
         }
     }
     sourceSets {
-        main {
-            jniLibs.srcDirs 'build/swift'
+        // See:
+        // - Gradle swap jniLibs resources based on build flavor - Stack Overflow: https://stackoverflow.com/questions/31687547/gradle-swap-jnilibs-resources-based-on-build-flavor
+        // Disabled as sources copied to `app/src/main/jniLibs` on build.
+        // main {
+        //     jniLibs.srcDirs 'build/swift'
+        // }
+    }
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn spm
+    }
+    // See: Android NDK. Decrease size of APK - Stack Overflow: https://stackoverflow.com/questions/21644150/android-ndk-decrease-size-of-apk
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            universalApk false
         }
     }
 }
@@ -49,6 +66,7 @@ task spm(type:Exec) {
     args = ["ruby", "-r", "../Scripts/Builder.rb", "-e", "Builder.perform('')"]
 }
 
+/*
 afterEvaluate {
     if (project.hasProperty("assembleRelease")) {
         assembleRelease.dependsOn spm
@@ -57,3 +75,11 @@ afterEvaluate {
         assembleDebug.dependsOn spm
     }
 }
+*/
+
+/*
+See: Configure Gradle to execute custom build step before starting compilation - Stack Overflow: https://stackoverflow.com/questions/27672553/configure-gradle-to-execute-custom-build-step-before-starting-compilation
+gradle.projectsEvaluated {
+    preBuild.dependsOn(spm)
+}
+*/

@@ -77,13 +77,18 @@ class Builder < Tool
       if @isVerbose
          @copyLibsCmd += " -v"
       end
-      @builds = "#{@root}/Android/app/build/swift/#{@arch}"
+      @builds = "#{@root}/Android/app/src/main/jniLibs/#{@arch}"
       system "mkdir -p \"#{@builds}\""
       system "#{@copyLibsCmd} #{@builds}"
       libs = Dir["#{@buildDir}/#{@config}/**/*.so"]
       libs.each { |lib|
          dst = File.join(@builds, File.basename(lib))
-         FileUtils.copy_entry(lib, dst, false, false, true)
+         if !FileUtils.uptodate?(dst, [lib])
+            if @isVerbose
+               puts "- Copying \"#{lib}\" to \"#{dst}\""
+            end
+            FileUtils.copy_entry(lib, dst, false, false, true)
+         end
       }
    end
 
