@@ -63,13 +63,8 @@ class URLTester: NSObject {
    let config = URLSessionConfiguration.default
    lazy var session = URLSession(configuration: config)
 
-   override init() {
-      super.init()
-//      session.delegate = self
-   }
-
    func test() {
-      AndroidLogger.info("SA - URLSession: Seems not Working yet.")
+      AndroidLogger.info("SA - URLSession: Works!")
       if let url = URL(string: "https://www.google.com") {
          let sema2 = DispatchSemaphore(value: 0)
          let task = session.dataTask(with: url) { data, response, error in
@@ -96,11 +91,3 @@ class URLTester: NSObject {
       }
    }
 }
-
-//extension URLTester: URLSessionDelegate {
-//
-//   func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
-//                   completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//      AndroidLogger.info("Challenge: " + String(describing: challenge))
-//   }
-//}
