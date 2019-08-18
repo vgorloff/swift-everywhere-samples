@@ -65,7 +65,7 @@ class Builder < Tool
    end
 
    def build()
-      @swiftBuild = @toolchainDir + "/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
+      @swiftBuild = @toolchainDir + "/usr/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
       if @isVerbose
          @swiftBuild += " -v"
       end
@@ -73,7 +73,7 @@ class Builder < Tool
    end
 
    def copyLibs()
-      @copyLibsCmd = @toolchainDir + "/bin/android-copy-libs --android-target #{@target}"
+      @copyLibsCmd = @toolchainDir + "/usr/bin/android-copy-libs --android-target #{@target}"
       if @isVerbose
          @copyLibsCmd += " -v"
       end
