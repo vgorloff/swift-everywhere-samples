@@ -1,8 +1,8 @@
 # Requirements
 
-- Xcode 11
-- Android Studio 3.4
-- Android NDK 20 (Comes with Android Studio as downloadable package).
+- Xcode 11.4
+- Android Studio 3.4.1
+- Android NDK r20b (Comes with Android Studio as downloadable package). **Note**: NDK r21 cannot be used with libDispatch yet due compile errors addressed clang/libc++ update.
 - Ruby 2.5 (Comes with macOS)
 
 ## Usage
@@ -21,8 +21,3 @@
 4. Open `iOS/HelloJNI.xcodeproj` in Xcode 11 and run it on Device or iOS Simulator.
 
 5. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
-
-## Links
-
-- Android NDK: Using C/C++ Native Libraries to Write Android Apps: http://bit.ly/2HjXYJk
-- Modern Android NDK Tutorial – Jordan Réjaud – Medium: http://bit.ly/2HvrmLO
