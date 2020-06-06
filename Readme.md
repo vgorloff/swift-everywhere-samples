@@ -13,13 +13,19 @@
 
 2. Make sure that file `Android/local.properties` has proper paths (usually paths already set by `Android Studio`):
 
-   - sdk.dir - Path to Android SDK (by default similar to: /Users/user/Library/Android/sdk)
-   - ndk.dir - Path to Android NDK (by default similar to: /Users/user/Library/Android/sdk/ndk/20.1.5948944)
+   - `sdk.dir` - Path to Android SDK (by default similar to: /Users/user/Library/Android/sdk)
+   - `ndk.dir` - Path to Android NDK (by default similar to: /Users/user/Library/Android/sdk/ndk/20.1.5948944)
 
-3. Copy file `local.properties.yml.template` to `local.properties.yml`. Update file `local.properties.yml` with proper paths:
+3. Make sure that you have a symlink to NDK directory at `/usr/local/ndk`. It should be the **same** as defined in `ndk.dir` in `Android/local.properties` file.
 
-   - swiftToolchain.dir - Path to Swift Toolchain (by default similar to: /Users/user/git/swift-everywhere-toolchain/ToolChain/swift-android-toolchain)
+   ```sh
+   sudo ln -fvs /path/to/ndk/20.1.5948944 /usr/local/ndk
+   ```
 
-4. Open `iOS/HelloJNI.xcodeproj` in Xcode 11 and run it on Device or iOS Simulator.
+4. Copy file `local.properties.yml.template` to `local.properties.yml`. Update file `local.properties.yml` with proper paths:
 
-5. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
+   - `swiftToolchain.dir` - Path to Swift Toolchain (by default similar to: /Users/user/git/swift-everywhere-toolchain/ToolChain/swift-android-toolchain)
+
+5. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
+
+6. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
