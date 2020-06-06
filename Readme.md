@@ -1,9 +1,11 @@
 # Requirements
 
-- Xcode 11.4
-- Android Studio 3.4.1
-- Android NDK r20b (Comes with Android Studio as downloadable package). **Note**: NDK r21 cannot be used with libDispatch yet due compile errors addressed clang/libc++ update.
-- Ruby 2.5 (Comes with macOS)
+- Xcode 11.5
+- Android Studio 4.0
+- Android NDK 20.1.5948944. **Note**: NDK 21.0.6113669 or above cannot be used with libDispatch at the moment due compile errors addressed clang/libc++ update.
+- Ruby 2.6.3 (ruby -v)
+- CMake 3.17.3 (cmake --version)
+- Ninja 1.10.0 (ninja --version)
 
 ## Usage
 
@@ -12,7 +14,7 @@
 2. Make sure that file `Android/local.properties` has proper paths (usually paths already set by `Android Studio`):
 
    - sdk.dir - Path to Android SDK (by default similar to: /Users/user/Library/Android/sdk)
-   - ndk.dir - Path to Android NDK (by default similar to: /Users/user/Library/Android/sdk/ndk-bundle)
+   - ndk.dir - Path to Android NDK (by default similar to: /Users/user/Library/Android/sdk/ndk/20.1.5948944)
 
 3. Copy file `local.properties.yml.template` to `local.properties.yml`. Update file `local.properties.yml` with proper paths:
 
