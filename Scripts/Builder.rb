@@ -1,8 +1,7 @@
 require 'yaml'
 require 'fileutils'
-require_relative "Tool.rb"
 
-class Builder < Tool
+class Builder
 
    def self.xcode()
       # puts "Environment"
@@ -65,7 +64,7 @@ class Builder < Tool
    end
 
    def build()
-      @swiftBuild = @toolchainDir + "/usr/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} --android-target #{@target}"
+      @swiftBuild = @toolchainDir + "/usr/bin/android-swift-build --build-path \"#{@buildDir}\" -c #{@config} -target #{@target}"
       if @isVerbose
          @swiftBuild += " -v"
       end
@@ -73,13 +72,13 @@ class Builder < Tool
    end
 
    def copyLibs()
-      @copyLibsCmd = @toolchainDir + "/usr/bin/android-copy-libs --android-target #{@target}"
+      @copyLibsCmd = @toolchainDir + "/usr/bin/android-copy-libs -target #{@target}"
       if @isVerbose
          @copyLibsCmd += " -v"
       end
       @builds = "#{@root}/Android/app/src/main/jniLibs/#{@arch}"
       system "mkdir -p \"#{@builds}\""
-      system "#{@copyLibsCmd} #{@builds}"
+      system "#{@copyLibsCmd} -output #{@builds}"
       libs = Dir["#{@buildDir}/#{@config}/**/*.so"]
       libs.each { |lib|
          dst = File.join(@builds, File.basename(lib))
@@ -90,6 +89,35 @@ class Builder < Tool
             FileUtils.copy_entry(lib, dst, false, false, true)
          end
       }
+   end
+
+   def execute(command)
+      print(command, 32) # Green color.
+      if system(command) != true
+         message "Execution of command is failed:"
+         error command
+         puts
+         help = <<EOM
+If error was due Memory, CPU, or Disk peak resource usage (i.e. missed file while file exists),
+then try to run previous command again. Build process will perform `configure` step again,
+but most of compilation steps will be skipped.
+EOM
+         message help
+         raise
+      end
+   end
+
+   def print(message, color = 32)
+      # See: Colorized Ruby output – https://stackoverflow.com/a/11482430/1418981
+      puts "\e[#{color}m#{message}\e[0m"
+   end
+
+   def message(command)
+      print(command, 36) # Light blue color.
+   end
+
+   def error(command)
+      print(command, 31) # Red color.
    end
 
 end
