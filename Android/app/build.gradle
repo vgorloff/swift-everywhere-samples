@@ -60,11 +60,25 @@ def getDeviceAbi() {
 }
 
 // See: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
-task spm(type:Exec) {
-    // project.logger.lifecycle("Building Swift sources...")
-    workingDir "$rootDir"
-    executable = '/usr/bin/env'
-    args = ["ruby", "-r", "../Scripts/Builder.rb", "-e", "Builder.perform('')"]
+task spm() {
+    doLast {
+        exec {
+            workingDir "$rootDir"
+            commandLine '/usr/bin/env', "../Scripts/Builder.sh", "-target", "armv7-none-linux-androideabi"
+        }
+        exec {
+            workingDir "$rootDir"
+            commandLine '/usr/bin/env', "../Scripts/Builder.sh", "-target", "aarch64-unknown-linux-android"
+        }
+        exec {
+            workingDir "$rootDir"
+            commandLine '/usr/bin/env', "../Scripts/Builder.sh", "-target", "i686-unknown-linux-android"
+        }
+        exec {
+            workingDir "$rootDir"
+            commandLine '/usr/bin/env', "../Scripts/Builder.sh", "-target", "x86_64-unknown-linux-android"
+        }
+    }
 }
 
 /*

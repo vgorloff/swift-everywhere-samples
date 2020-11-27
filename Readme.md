@@ -1,11 +1,11 @@
-# Requirements
+# swift-everywhere-samples
 
+## Requirements
+
+- macOS 11.x
 - Xcode 12.x
 - Android Studio 4.1
 - Android NDK 21.3.6528147
-- Ruby 2.6.3 (ruby -v)
-- CMake 3.17.3 (cmake --version)
-- Ninja 1.10.0 (ninja --version)
 
 ## Usage
 
@@ -18,9 +18,9 @@
    sudo ln -vsi ~/Library/Android/sdk/ndk/21.3.6528147 /usr/local/ndk/21.3.6528147
    ```
 
-3. Copy file `local.properties.yml.template` to `local.properties.yml`. Update file `local.properties.yml` with proper paths:
+3. Copy file `example.swiftToolchain.rc` to `swiftToolchain.rc`. Update file `swiftToolchain.rc` with proper paths:
 
-   - `swiftToolchain.dir` - Path to Swift Toolchain (by default similar to: /Users/user/git/swift-everywhere-toolchain/ToolChain/swift-android-toolchain)
+   - `SaSwiftToolchainDirPath` - Path to Swift Toolchain you downloaded or built on step 1.
 
 4. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
 
