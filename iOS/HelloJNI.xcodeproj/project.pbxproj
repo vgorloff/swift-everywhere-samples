@@ -97,11 +97,11 @@
 /* Begin PBXLegacyTarget section */
 		80B55E7522FE038B00B6BFA0 /* android */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = "-target aarch64-unknown-linux-android";
 			buildConfigurationList = 80B55E7822FE038B00B6BFA0 /* Build configuration list for PBXLegacyTarget "android" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/make;
+			buildToolPath = ../Scripts/Builder.sh;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);

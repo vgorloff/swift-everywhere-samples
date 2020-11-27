@@ -1,6 +1,6 @@
 /*.log
 .DS_Store
-local.properties.yml
+swiftToolchain.rc
 /*.code-workspace
 /.build
 xcuserdata/
