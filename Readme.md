@@ -22,6 +22,10 @@
 
    - `SaSwiftToolchainDirPath` - Path to Swift Toolchain you downloaded or built on step 1.
 
-4. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
+4. Install "Protocol buffers" for Java and Swift sources generation `brew install protobuf swift-protobuf`
 
-5. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
+5. (Optional) Generate models: `Scripts/GenerateModels.sh`
+
+6. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
+
+7. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
