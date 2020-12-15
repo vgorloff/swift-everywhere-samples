@@ -1,7 +1,7 @@
 module ndk [system] {
 
    module log {
-      header "sysNDKLog.h"
+      header "shim.h"
       export *
       link "log"
    }

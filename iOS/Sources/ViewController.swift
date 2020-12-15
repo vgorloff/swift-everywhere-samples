@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import HelloJNICore
+import saModels
+import Logging
+
+private let log = Logger(label: "view")
 
 class ViewController: UIViewController {
 
@@ -24,7 +27,7 @@ class ViewController: UIViewController {
 extension ViewController {
 
    private func setupUI() {
-      view.backgroundColor = .blue
+      view.backgroundColor = .lightGray
       view.addSubview(stackView)
 
       stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,12 +40,14 @@ extension ViewController {
       stackView.addArrangedSubview(button)
       stackView.addArrangedSubview(UIView())
 
-      button.setTitle("Get Time", for: .normal)
-      button.addTarget(self, action: #selector(getTime), for: .touchUpInside)
+      button.setTitle("Tap and See console", for: .normal)
+      button.addTarget(self, action: #selector(execute), for: .touchUpInside)
    }
 
-   @objc private func getTime() {
-      let time = sayHello()
-      button.setTitle("\(time)", for: .normal)
+   @objc private func execute() {
+      let book = makeAddressBook()
+      let data = try! book.serializedData()
+      let result = try! SAAddressBook(serializedData: data)
+      log.info("\(result)")
    }
 }

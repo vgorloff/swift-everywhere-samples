@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -7,11 +7,16 @@ let package = Package(
    products: [
       // See: https://theswiftdev.com/2019/01/14/all-about-the-swift-package-manager-and-the-swift-toolchain/
       .library(name: "HelloJNICore", type: .dynamic, targets: ["HelloJNICore"]),
-      .library(name: "NDKLog", targets: ["NDKLog"])
+   ],
+   dependencies: [
+      .package(name: "SwiftProtobuf", url: "https://github.com/apple/swift-protobuf.git", .exact("1.13.0")), // Keep verssion in sync with `protoc-gen-swift --version`,
+      .package(url: "https://github.com/apple/swift-log.git", from: "1.4.0")
    ],
    targets: [
-      .target(name: "HelloJNICore", dependencies: ["NDKLog"]),
-      .target(name: "NDKLog", dependencies: ["sysNDKLog"]),
-      .systemLibrary(name: "sysNDKLog")
+      .target(name: "HelloJNICore", dependencies: ["AndroidLog", "saModels"]),
+      .target(name: "saModels", dependencies: ["SwiftProtobuf", "CAndroidJNI", .product(name: "Logging", package: "swift-log")]),
+      .target(name: "AndroidLog", dependencies: ["CAndroidLog", .product(name: "Logging", package: "swift-log")]),
+      .systemLibrary(name: "CAndroidLog"),
+      .target(name: "CAndroidJNI")
    ]
 )

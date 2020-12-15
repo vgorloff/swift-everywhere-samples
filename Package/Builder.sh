@@ -50,6 +50,13 @@ case $SaArchTarget in
   ;;
 esac
 
+cd "$SaRooDirPath/Package"
+
+if [ -z "$SaNdkArch" ]; then
+  swift build "$@"
+  exit 0
+fi
+
 SaBuildDir="$SaRooDirPath/Android/app/build/swift"
 SaOutputDir="$SaRooDirPath/Android/app/src/main/jniLibs/$SaNdkArch"
 
@@ -60,11 +67,9 @@ function copySoFile {
   fi
 }
 
-cd "$SaRooDirPath/Package"
-
-"$SaSwiftToolchainDirPath/usr/bin/android-swift-build" -target $SaArchTarget --build-path "$SaBuildDir" "$@"
+"$SaSwiftToolchainDirPath/usr/bin/android-swift-build" -target $SaArchTarget "$@"
 "$SaSwiftToolchainDirPath/usr/bin/android-copy-libs" -target $SaArchTarget -output $SaOutputDir
-SaBinPath=$("$SaSwiftToolchainDirPath/usr/bin/android-swift-build" -target $SaArchTarget --build-path "$SaBuildDir" "$@" --show-bin-path)
+SaBinPath=$("$SaSwiftToolchainDirPath/usr/bin/android-swift-build" -target $SaArchTarget "$@" --show-bin-path)
 
 for SaFilePath in `find "$SaBinPath" -type f -iname *.so -print`; do
   copySoFile "$SaFilePath"
