@@ -2,16 +2,9 @@ package com.home.helloNDK
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.system.Os
-import android.util.Log
-import android.widget.Button
-import android.widget.LinearLayout
-import com.home.addressBook.AddressBookProtos
-import com.home.addressBook.AddressBookProtos.AddressBook
-import com.home.addressBook.AddressBookProtos.Person.PhoneNumber
+import swift.SwiftLib
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -57,10 +50,21 @@ class MainActivity : LinearLayoutActivity() {
          startActivity(Intent(this, AddressBookActivity::class.java))
       }
 
+      /* Temporary disabled. Still not working properly.
+      See:
+
+      - JNI Types and Data Structures: https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/types.html
+      - java - Call function pointer from JNI - Stack Overflow: https://stackoverflow.com/questions/6619980/call-function-pointer-from-jni
+      - ndk-samples/hello-jnicallback.c at master · android/ndk-samples: https://github.com/android/ndk-samples/blob/master/hello-jniCallback/app/src/main/cpp/hello-jnicallback.c
+      - JNI - How to callback from C++ or C to Java? - Stack Overflow: https://stackoverflow.com/questions/9630134/jni-how-to-callback-from-c-or-c-to-java
+      - Java Native Interface (JNI) - Java Programming Tutorial: https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html#zz-6.1
+      - swift-jni/SwiftJNI.swift at devel · SwiftAndroid/swift-jni: https://github.com/SwiftAndroid/swift-jni/blob/devel/Sources/JNI/SwiftJNI.swift
+
       val showTimerButton = makeButton("Show \"Timer\" Screen")
       showTimerButton.setOnClickListener {
          startActivity(Intent(this, TimerActivity::class.java))
       }
+      */
    }
 
    @Throws(IOException::class)

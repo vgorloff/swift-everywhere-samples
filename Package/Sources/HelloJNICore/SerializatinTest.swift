@@ -3,7 +3,7 @@ import Logging
 
 private let log = Logger(label: "serialization-tests")
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_testSerialization")
+@_cdecl("Java_swift_SwiftLib_testSerialization")
 func testSerialization() {
    let json = ["name": "Message from Swift serialization."]
    do {

@@ -1,4 +1,4 @@
-package com.home.helloNDK
+package swift
 
 class SwiftLib {
    companion object {

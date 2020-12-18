@@ -21,7 +21,7 @@ public func makeAddressBook() -> SAAddressBook {
    return book
 }
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_printAddressBook")
+@_cdecl("Java_swift_SwiftLib_printAddressBook")
 public func printAddressBook(env: UnsafeMutablePointer<JNIEnv?>, me: jclass, bytes: jbyteArray) {
    log.info("printAddressBook")
    let l = GetArrayLength(env, me, bytes)
@@ -34,7 +34,7 @@ public func printAddressBook(env: UnsafeMutablePointer<JNIEnv?>, me: jclass, byt
    log.info("\(book)")
 }
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_getAddressBook")
+@_cdecl("Java_swift_SwiftLib_getAddressBook")
 public func getAddressBook(env: UnsafeMutablePointer<JNIEnv?>, me: jclass) -> jbyteArray? {
    let book = makeAddressBook()
    log.info("getAddressBook: \(book)")

@@ -4,7 +4,7 @@ import Foundation
 private let opQueue = OperationQueue()
 private let log = Logger(label: "operation-tests")
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_testOperation")
+@_cdecl("Java_swift_SwiftLib_testOperation")
 func testOperation() {
    log.info("Starting execution from caller queue on \(Thread.current.name ?? "-")")
    let op = BlockOperation {

@@ -1,12 +1,18 @@
 //
 //  File.c
-//  
+//
 //
 //  Created by Vlad Gorlov on 04.12.20.
 //
 
 #include "Helpers.h"
 #include <stddef.h>
+
+void CallVoidMethod(JNIEnv * _Nonnull env, jobject thisClass, const char* name, const char* sig) {
+   jclass jc = env->GetObjectClass(thisClass);
+   jmethodID midCallBack = env->GetMethodID(jc, name, sig);
+   env->CallVoidMethod(thisClass, midCallBack);
+}
 
 int GetArrayLength(JNIEnv * _Nonnull env, jclass _Nonnull thisClass, jbyteArray _Nonnull bArray) {
    int len = env->GetArrayLength(bArray);

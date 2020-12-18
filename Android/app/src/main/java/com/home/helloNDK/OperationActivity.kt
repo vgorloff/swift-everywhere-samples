@@ -1,12 +1,11 @@
 package com.home.helloNDK
 
-import android.app.ProgressDialog
-import android.app.ProgressDialog.STYLE_SPINNER
 import android.os.Bundle
 import android.util.Log
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import swift.SwiftLib
 
 class OperationActivity : LinearLayoutActivity() {
 

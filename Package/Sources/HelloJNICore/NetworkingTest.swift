@@ -7,7 +7,7 @@ import Logging
 
 private let log = Logger(label: "networking-tests")
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_testNetworking")
+@_cdecl("Java_swift_SwiftLib_testNetworking")
 public func testNetworking() {
    NetworkingTester().test()
 }

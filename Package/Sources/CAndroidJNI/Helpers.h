@@ -1,6 +1,6 @@
 //
 //  File.h
-//  
+//
 //
 //  Created by Vlad Gorlov on 04.12.20.
 //
@@ -18,6 +18,8 @@ typedef struct {
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+void CallVoidMethod(JNIEnv * _Nonnull env, jobject thisClass, const char* name, const char* sig);
 
 int GetArrayLength(JNIEnv * _Nonnull env, jclass thisClass, jbyteArray bArray);
 jbyte* _Nonnull GetByteArrayElements(JNIEnv * _Nonnull env, jclass _Nonnull thisClass, jbyteArray _Nonnull bArray);

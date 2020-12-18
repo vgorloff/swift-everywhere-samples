@@ -4,7 +4,7 @@ import Foundation
 
 private let log = Logger(label: "dispatch-tests")
 
-@_cdecl("Java_com_home_helloNDK_SwiftLib_testDispatch")
+@_cdecl("Java_swift_SwiftLib_testDispatch")
 func testDispatch() {
    let semaphore = DispatchSemaphore(value: 0)
 
