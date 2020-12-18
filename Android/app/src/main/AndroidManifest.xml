@@ -24,6 +24,7 @@
         <activity android:name=".SerializationActivity"/>
         <activity android:name=".NetworkingActivity"/>
         <activity android:name=".AddressBookActivity"/>
+        <activity android:name=".TimerActivity"/>
     </application>
 
 </manifest>

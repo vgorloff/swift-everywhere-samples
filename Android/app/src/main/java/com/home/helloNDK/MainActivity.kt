@@ -56,6 +56,11 @@ class MainActivity : LinearLayoutActivity() {
       showAddressBookButton.setOnClickListener {
          startActivity(Intent(this, AddressBookActivity::class.java))
       }
+
+      val showTimerButton = makeButton("Show \"Timer\" Screen")
+      showTimerButton.setOnClickListener {
+         startActivity(Intent(this, TimerActivity::class.java))
+      }
    }
 
    @Throws(IOException::class)
