@@ -1,9 +1,10 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.4
 
 import PackageDescription
 
 let package = Package(
    name: "HelloJNI",
+   platforms: [.iOS(.v11)],
    products: [
       // See: https://theswiftdev.com/2019/01/14/all-about-the-swift-package-manager-and-the-swift-toolchain/
       .library(name: "HelloJNICore", type: .dynamic, targets: ["HelloJNICore"]),

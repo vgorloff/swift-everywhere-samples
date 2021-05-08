@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.google.protobuf'
 
 android {
-    ndkVersion "21.3.6528147"
+    ndkVersion "21.4.7075529"
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.home.hello_ndk"
