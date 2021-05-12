@@ -36,7 +36,7 @@ done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
 case $SaArchTarget in
-  armv7-none-linux-androideabi)
+  armv7-unknown-linux-android)
   SaNdkArch=armeabi-v7a
   ;;
   aarch64-unknown-linux-android)

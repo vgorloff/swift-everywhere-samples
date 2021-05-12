@@ -86,7 +86,7 @@ task spm() {
     doLast {
         exec {
             workingDir "$rootDir"
-            commandLine '/usr/bin/env', "../Package/Builder.sh", "-target", "armv7-none-linux-androideabi"
+            commandLine '/usr/bin/env', "../Package/Builder.sh", "-target", "armv7-unknown-linux-android"
         }
         exec {
             workingDir "$rootDir"
