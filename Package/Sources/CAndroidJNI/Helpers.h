@@ -8,7 +8,7 @@
 #ifndef File_h
 #define File_h
 
-#include "/usr/local/ndk/21.3.6528147/sysroot/usr/include/jni.h"
+#include "/usr/local/ndk/21.4.7075529/sysroot/usr/include/jni.h"
 
 typedef struct {
     const signed char * _Nonnull data;
