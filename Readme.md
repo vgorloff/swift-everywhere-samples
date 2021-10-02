@@ -21,14 +21,16 @@
 
 4. Make sure that NDK version defined in Gradle build configuration file (See: `Android/app/build.gradle`) in property `android.ndkVersion` matches NDK version from file you viewed on step 2. Update property `android.ndkVersion` if needed.
 
-5. Copy file `example.swiftToolchain.rc` to `swiftToolchain.rc`. Update file `swiftToolchain.rc` with proper paths:
+5. Make sure that the absolute paths to NDK headers in sources matching NDK version inside file `NDK_VERSION`.
+
+6. Copy file `example.swiftToolchain.rc` to `swiftToolchain.rc`. Update file `swiftToolchain.rc` with proper paths:
 
    - `SaSwiftToolchainDirPath` - Path to Swift Toolchain you downloaded or built on step 1.
 
-6. Install "Protocol buffers" for Java and Swift sources generation `brew install protobuf swift-protobuf`
+7. Install "Protocol buffers" for Java and Swift sources generation `brew install protobuf swift-protobuf`
 
-7. (Optional) Generate models: `Scripts/GenerateModels.sh`
+8. (Optional) Generate models: `Scripts/GenerateModels.sh`
 
-8. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
+9. Open `iOS/HelloJNI.xcodeproj` in Xcode and run it on Device or iOS Simulator.
 
-9. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
+10. Open folder `Android` in Android Studio and run it on Device or Android Simulator.
